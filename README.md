@@ -15,16 +15,17 @@ Izveido `.env` failu projekta saknē.
 
 Piemērs:
 PORT=3000
-DB_HOST=
-DB_USER=
-DB_PASS=
-DB_NAME=
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=prakse
+
 
 ## Palaišana (development)
 npm run dev
 
 Vai alternatīvi:
-node src/app.js
+node src/server.js
 
 ## Pārbaude
 Atver pārlūkā:
@@ -32,12 +33,48 @@ http://localhost:3000/health
 
 Sagaidāmais rezultāts:
 { "status": "ok" }
+## API galapunkti
+
+### GET /health
+Atgriež servera statusu.
+
+### POST /users
+Izveido jaunu lietotāju ar validāciju un paroles hešošanu.
+
+### GET /users
+Atgriež lietotāju sarakstu bez parolēm.
+
+Atbalsta:
+- filtrēšanu pēc e-pasta (?email=)
+- pagināciju (?page=&limit=)
+
 
 ## Projekta struktūra
 intern_project/
-├─ src/
-│  └─ app.js
-├─ .env
-├─ package.json
-└─ README.md
+├ src/
+│ ├ routes/
+│ │  └ users.js
+│ ├ db/
+│ │  └ db.js          
+│ ├ middleware/
+│ ├ utils/
+│ │  ├ validateUser.js 
+│ │  ├ httpError.js
+│ └ server.js
+│
+├ db/
+│ ├ schema.sql        
+│ └ seed.sql          
+│
+├ tests/
+│ ├ validateUser.test.js
+│ └ users.api.test.js
+│
+├ docs/
+│ ├ testing_report.md
+│ ├ intern_project.postman_collection.json
+│ ├ summary.md
+├ README.md
+├ package.json
+└  package-lock.json
 
