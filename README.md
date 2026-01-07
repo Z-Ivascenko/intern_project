@@ -50,6 +50,7 @@ Atbalsta:
 
 
 ## Projekta struktūra
+```
 intern_project/
 ├ src/
 │ ├ routes/
